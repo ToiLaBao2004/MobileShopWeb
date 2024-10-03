@@ -46,24 +46,6 @@ CREATE TABLE Discounts (
     EndDay DATE NOT NULL
 );
 
--- Bảng Suppliers
-CREATE TABLE Suppliers (
-    Supplier_ID VARCHAR(10) PRIMARY KEY,
-    CompanyName NVARCHAR(30) NOT NULL,
-    PhoneNumber VARCHAR(12) NOT NULL CHECK (LENGTH(PhoneNumber) = 10 AND PhoneNumber REGEXP '^[0-9]+$'),
-    AddressSupplier NVARCHAR(100) NOT NULL,
-    Email VARCHAR(50)
-);
-
--- Bảng Imports
-CREATE TABLE Imports (
-    Import_ID VARCHAR(10) PRIMARY KEY,
-    Supplier_ID VARCHAR(10) NOT NULL,
-    ImportDay DATE NOT NULL,
-    Total INT NOT NULL,
-    FOREIGN KEY (Supplier_ID) REFERENCES Suppliers(Supplier_ID) ON UPDATE CASCADE
-);
-
 -- Bảng Orders
 CREATE TABLE Orders (
     Order_ID VARCHAR(15) PRIMARY KEY,
@@ -105,15 +87,4 @@ CREATE TABLE OrderDetails (
     FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID) ON DELETE CASCADE,
     FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID) ON UPDATE CASCADE,
     PRIMARY KEY (Order_ID, Product_ID)
-);
-
--- Bảng ImportDetails
-CREATE TABLE ImportDetails (
-    Import_ID VARCHAR(10) NOT NULL,
-    Product_ID VARCHAR(15) NOT NULL,
-    Quantity INT NOT NULL,
-    UnitCost INT NOT NULL,
-    FOREIGN KEY (Import_ID) REFERENCES Imports(Import_ID) ON DELETE CASCADE,
-    FOREIGN KEY (Product_ID) REFERENCES Products(Product_ID),
-    PRIMARY KEY (Import_ID, Product_ID)
 );
