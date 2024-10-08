@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS FinalProjectWeb;
+
 CREATE DATABASE FinalProjectWeb;
 
 USE FinalProjectWeb;
@@ -21,7 +23,7 @@ CREATE TABLE Employees (
     PhoneNumber VARCHAR(12) NOT NULL,
     RoleEmployee NVARCHAR(50) NOT NULL,
     Active CHAR(1) NOT NULL,
-    PassWordAccount VARCHAR(10) NOT NULL,
+    PassWordAccount VARCHAR(20) NOT NULL,
     CONSTRAINT PhoneNumber_Employee CHECK (LENGTH(PhoneNumber) = 10 AND PhoneNumber REGEXP '^[0-9]+$'),
     CONSTRAINT LengthPassWordAccount CHECK (LENGTH(PassWordAccount) >= 6)
 );
@@ -59,12 +61,6 @@ CREATE TABLE Orders (
     FOREIGN KEY (DiscountCode) REFERENCES Discounts(DiscountCode)
 );
 
--- Bảng PictureProduct
-CREATE TABLE PictureProduct (
-    Picture_ID INT AUTO_INCREMENT PRIMARY KEY,
-    Picture_Name VARCHAR(100)
-);
-
 -- Bảng Products
 CREATE TABLE Products (
     Product_ID VARCHAR(15) PRIMARY KEY,
@@ -73,10 +69,9 @@ CREATE TABLE Products (
     Quantity INT NOT NULL,
     Brand_ID VARCHAR(10) NOT NULL,
     Category_ID VARCHAR(10) NOT NULL,
-    Picture_ID INT,
+    Picture_Path VARCHAR(100),
     FOREIGN KEY (Brand_ID) REFERENCES Brands(Brand_ID),
-    FOREIGN KEY (Category_ID) REFERENCES Categories(Category_ID),
-    FOREIGN KEY (Picture_ID) REFERENCES PictureProduct(Picture_ID)
+    FOREIGN KEY (Category_ID) REFERENCES Categories(Category_ID)
 );
 
 -- Bảng OrderDetails
