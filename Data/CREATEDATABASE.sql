@@ -9,6 +9,7 @@ CREATE TABLE Customers (
 	Customer_ID INT AUTO_INCREMENT PRIMARY KEY,
 	PhoneNumber VARCHAR(12) NOT NULL CHECK (LENGTH(PhoneNumber) = 10 AND PhoneNumber REGEXP '^[0-9]+$'),
     NameCustomer NVARCHAR(50) NOT NULL,
+    AddressCustomer NVARCHAR(100) NOT NULL,
     Birthday DATE,
     Gender CHAR(3) NOT NULL CHECK (Gender IN ('Nam', 'Nữ'))
 );

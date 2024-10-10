@@ -7,11 +7,11 @@ VALUES
 	('sale2', 'Lê Thị Mỹ Dung', '1990-07-15', 'Nữ', 'Quận 12, TPHCM', '0345671234', 'Nhân viên bán hàng', '1', 'password123');
     
 -- Thêm dữ liệu vào bảng Customers
-INSERT INTO Customers (PhoneNumber, NameCustomer, Birthday, Gender)
+INSERT INTO Customers (PhoneNumber, NameCustomer, AddressCustomer, Birthday, Gender)
 VALUES 
-	('0123456789', 'Nguyễn Văn Vinh', '1990-01-01', 'Nam'),
-	('0987654321', 'Trần Thị Bích', '1985-05-10', 'Nữ'),
-	('0912345678', 'Lê Hoàng Phúc', '1993-03-22', 'Nam');
+	('0123456789', 'Nguyễn Văn Vinh', 'HCM', '1990-01-01', 'Nam'),
+	('0987654321', 'Trần Thị Bích', 'HCM', '1985-05-10', 'Nữ'),
+	('0912345678', 'Lê Hoàng Phúc', 'HCM', '1993-03-22', 'Nam');
 
 -- Thêm nhiều thương hiệu vào bảng Brands
 INSERT INTO Brands (Brand_ID, BrandName)
